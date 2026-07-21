@@ -23,5 +23,8 @@ jobs:
       - name: Validate example output
         run: python scripts/validate_output.py examples/real-estate-output.json
 
+      - name: Validate case study output
+        run: python scripts/validate_output.py examples/structured-output.json
+
       - name: Run tests
         run: python -m unittest discover -s tests -v
