@@ -41,6 +41,21 @@ ai-requirement-analysis-skill/
     └── test_examples.py
 ```
 
+## 真实案例
+
+### Case Study 01：房屋交易业务流程结构化分析
+
+基于一张跨系统房屋交易流程图，使用本 Skill 完成业务阶段与系统识别、关键节点抽取、问题候选诊断、AI适配性评估及标准需求卡片生成。
+
+- [查看完整案例](examples/README.md)
+- [查看业务流程提取结果](examples/process-extraction.md)
+- [查看平台诊断与AI适配分析](examples/analysis-report.md)
+- [查看结构化需求卡片 JSON](examples/structured-output.json)
+- [查看人工复核与待确认事项](examples/validation-notes.md)
+
+**案例结论：**识别出5个业务阶段和5类业务系统，并区分了确定性系统建设问题、数据接口问题及适合知识检索的潜在AI场景；所有缺少用户证据的判断均标记为待验证。
+
+
 ## 快速使用
 
 将整个文件夹或打包后的 `.skill` 文件导入支持 Agent Skills 标准的产品，然后提供业务材料，例如：
