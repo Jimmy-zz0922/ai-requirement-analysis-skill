@@ -1,0 +1,245 @@
+{
+  "analysis_meta": {
+    "project_name": "房屋交易业务流程结构化分析",
+    "generated_at": "2026-07-21T16:00:00+08:00",
+    "source_count": 1,
+    "analyst_notes": "公开案例未包含原PDF，仅依据脱敏后的流程图信息生成。除图中明确标注外，问题候选均需进一步验证。"
+  },
+  "requirement_cards": [
+    {
+      "requirement_id": "REQ-001",
+      "title": "建设现售楼盘表能力",
+      "user_role": "房地产信息平台业务管理人员",
+      "business_stage": "现售销售阶段",
+      "scenario": "建立并维护现售房源的楼盘表及其与交易、测绘和登记信息的关联",
+      "user_goal": "为现售价格备案、合同网签和后续登记提供结构化房源基础",
+      "current_behavior": "流程图将现售楼盘表标记为未实现",
+      "pain_point": "现售销售阶段缺少已实现的现售楼盘表能力",
+      "problem_type": "system_usability",
+      "root_cause": "当前材料仅能确认功能未实现，具体技术、数据或组织原因待确认",
+      "business_impact": "可能影响现售房源信息组织及与后续交易、登记环节的衔接，实际影响范围待确认",
+      "frequency": "unknown",
+      "impact_scope": "现售销售相关业务及参与系统，待进一步确认",
+      "severity": "medium",
+      "evidence": [
+        {
+          "source_id": "SRC-001",
+          "source_type": "process",
+          "source_title": "房屋交易业务流程（脱敏摘要）",
+          "source_date": null,
+          "source_version": null,
+          "locator": "第1页，现售销售阶段",
+          "excerpt": "现售楼盘表（未实现）",
+          "evidence_type": "direct",
+          "evidence_confidence": "high"
+        }
+      ],
+      "ai_assessment": {
+        "fit": "not_recommended",
+        "capabilities": [
+          "none"
+        ],
+        "rationale": "该需求属于确定性的业务对象、数据模型和系统功能建设，不需要依赖大模型完成核心能力。",
+        "data_dependencies": [
+          "现售房源字段口径",
+          "竣工测绘成果",
+          "不动产单元信息",
+          "现售价格备案信息"
+        ],
+        "system_dependencies": [
+          "房地产信息平台",
+          "测绘大队系统",
+          "不动产登记平台"
+        ],
+        "human_review_points": [
+          "确认业务范围和字段口径",
+          "确认数据权属与更新责任",
+          "验收楼盘表与后续交易流程的关联"
+        ],
+        "risks": [
+          "材料版本不明",
+          "功能未实现的具体边界不清",
+          "跨系统数据口径不一致"
+        ]
+      },
+      "product_proposal": {
+        "form": "现售楼盘表管理模块",
+        "description": "建立现售房源、楼栋、套房及不动产单元的结构化关联，并与测绘成果、价格备案、合同网签和登记状态衔接。",
+        "alternative_non_ai": "采用标准数据模型、业务规则和系统接口完成建设，不使用生成式AI。"
+      },
+      "priority": "P2",
+      "confidence": "medium",
+      "validation_status": "partially_validated",
+      "open_questions": [
+        "未实现是指完全缺失还是部分功能未上线",
+        "现售楼盘表的责任部门和数据来源是什么",
+        "该缺口影响哪些现有业务和用户"
+      ]
+    },
+    {
+      "requirement_id": "REQ-002",
+      "title": "统一跨系统业务状态查询",
+      "user_role": "业务经办人员与交易参与主体",
+      "business_stage": "房屋交易全生命周期",
+      "scenario": "查询测绘、网签、备案、登记等跨系统节点的当前状态",
+      "user_goal": "了解业务所处节点、前置条件和下一步处理事项",
+      "current_behavior": "流程图显示多个系统间存在业务流转和状态同步，具体查询方式未说明",
+      "pain_point": "是否存在状态分散、同步延迟或查询困难，当前材料无法确认",
+      "problem_type": "cross_department_collaboration",
+      "root_cause": "流程横跨多个系统，若缺少统一状态模型和展示入口，可能形成状态协同问题；该判断待验证",
+      "business_impact": "可能影响业务协同和进度透明度，实际频率与影响范围待确认",
+      "frequency": "unknown",
+      "impact_scope": "跨系统办理人员和交易主体，待确认",
+      "severity": "medium",
+      "evidence": [
+        {
+          "source_id": "SRC-001",
+          "source_type": "process",
+          "source_title": "房屋交易业务流程（脱敏摘要）",
+          "source_date": null,
+          "source_version": null,
+          "locator": "第1页，系统泳道及底部状态同步",
+          "excerpt": "流程横跨房地产信息平台、不动产登记平台、测绘大队系统和规资局数据中心系统，并标注状态同步。",
+          "evidence_type": "inferred",
+          "evidence_confidence": "medium"
+        }
+      ],
+      "ai_assessment": {
+        "fit": "low",
+        "capabilities": [
+          "analytics",
+          "workflow_assistance"
+        ],
+        "rationale": "核心问题应由接口治理、统一状态模型和监控机制解决；AI仅可用于异常摘要、状态解释或客服辅助。",
+        "data_dependencies": [
+          "统一业务编号",
+          "各系统状态码",
+          "状态更新时间",
+          "异常与回退记录"
+        ],
+        "system_dependencies": [
+          "跨系统接口",
+          "状态中心",
+          "日志与监控平台",
+          "用户查询入口"
+        ],
+        "human_review_points": [
+          "确认状态码映射",
+          "确认异常处理和责任边界",
+          "审核对外状态解释"
+        ],
+        "risks": [
+          "不同系统状态语义不一致",
+          "同步延迟",
+          "AI解释与真实业务状态不一致"
+        ]
+      },
+      "product_proposal": {
+        "form": "统一业务状态中心",
+        "description": "以统一业务编号聚合各系统节点状态，展示当前节点、更新时间、异常信息和责任主体；AI仅用于对状态和异常进行辅助解释。",
+        "alternative_non_ai": "通过接口集成、状态码映射、事件通知和规则化进度展示实现。"
+      },
+      "priority": "P2",
+      "confidence": "low",
+      "validation_status": "pending",
+      "open_questions": [
+        "当前是否已有统一状态查询入口",
+        "是否存在同步延迟或状态不一致的真实案例",
+        "业务人员和公众分别需要查看哪些状态"
+      ]
+    },
+    {
+      "requirement_id": "REQ-003",
+      "title": "房屋交易流程知识检索与节点解释",
+      "user_role": "开发企业、购房者、中介机构及业务经办人员",
+      "business_stage": "房屋交易全生命周期",
+      "scenario": "理解不同交易阶段的办理条件、系统流转和下一步事项",
+      "user_goal": "快速获得与当前业务阶段相关的流程和规则说明",
+      "current_behavior": "流程涉及多阶段、多系统和多类许可、网签、备案与登记节点，用户当前获取方式未说明",
+      "pain_point": "是否存在流程理解困难或咨询成本，当前材料无法确认",
+      "problem_type": "information_access",
+      "root_cause": "若流程与规则分散在不同系统和文件中，可能增加检索和理解成本；该判断需用户证据支持",
+      "business_impact": "可能影响办理准备和咨询效率，实际影响待确认",
+      "frequency": "unknown",
+      "impact_scope": "各类交易参与主体，待确认",
+      "severity": "low",
+      "evidence": [
+        {
+          "source_id": "SRC-001",
+          "source_type": "process",
+          "source_title": "房屋交易业务流程（脱敏摘要）",
+          "source_date": null,
+          "source_version": null,
+          "locator": "第1页，全流程",
+          "excerpt": "流程覆盖预售许可、预售销售、首次登记、现售销售和二手房销售，并涉及多个业务系统。",
+          "evidence_type": "inferred",
+          "evidence_confidence": "low"
+        }
+      ],
+      "ai_assessment": {
+        "fit": "medium",
+        "capabilities": [
+          "rag",
+          "llm_qa",
+          "workflow_assistance"
+        ],
+        "rationale": "若后续调研确认存在流程与规则查询痛点，可采用带引用的RAG问答解释业务节点；审批、产权和资金相关结论必须转人工或由规则引擎确定。",
+        "data_dependencies": [
+          "有效办事指南",
+          "政策文件",
+          "业务流程",
+          "材料清单",
+          "常见问题"
+        ],
+        "system_dependencies": [
+          "知识库更新机制",
+          "用户身份与业务阶段识别",
+          "引用溯源与人工转接"
+        ],
+        "human_review_points": [
+          "知识入库审核",
+          "高风险问题转人工",
+          "政策版本更新复核"
+        ],
+        "risks": [
+          "政策版本过期",
+          "遗漏例外条件",
+          "用户将辅助解释视为最终审批结论"
+        ]
+      },
+      "product_proposal": {
+        "form": "房屋交易流程知识助手",
+        "description": "基于用户角色和业务阶段检索有效流程、指南和规则，返回带来源引用的节点说明与下一步建议，并对高风险问题进行人工转接。",
+        "alternative_non_ai": "建设按角色和阶段组织的流程导航、条件筛选式办事向导及统一FAQ。"
+      },
+      "priority": "P3",
+      "confidence": "low",
+      "validation_status": "pending",
+      "open_questions": [
+        "是否存在高频流程咨询或材料查询问题",
+        "哪些用户最需要流程解释",
+        "是否具备可持续维护的权威知识源"
+      ]
+    }
+  ],
+  "open_questions": [
+    "流程图的日期、版本和业务适用范围是什么",
+    "现售楼盘表未实现的具体边界和影响是什么",
+    "各系统接口、状态码和异常处理机制如何设计",
+    "是否存在用户流程理解、进度查询或材料查询痛点",
+    "哪些材料允许进入AI知识库并由谁负责更新"
+  ],
+  "evidence_index": [
+    {
+      "source_id": "SRC-001",
+      "source_type": "process",
+      "source_title": "房屋交易业务流程（脱敏摘要）",
+      "source_date": null,
+      "source_version": null,
+      "locator": "第1页，全流程图",
+      "excerpt": "流程覆盖5个业务阶段和5类系统；图中标注现售楼盘表（未实现）及状态同步。",
+      "evidence_type": "direct",
+      "evidence_confidence": "high"
+    }
+  ]
+}
