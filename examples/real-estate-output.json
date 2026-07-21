@@ -1,0 +1,210 @@
+{
+  "analysis_meta": {
+    "project_name": "房地产信息平台数智化转型示例",
+    "generated_at": "2026-07-21T14:00:00+08:00",
+    "source_count": 4,
+    "analyst_notes": "示例仅演示字段、证据和AI适配边界。"
+  },
+  "requirement_cards": [
+    {
+      "requirement_id": "REQ-001",
+      "title": "个性化办事材料查询",
+      "user_role": "购房者",
+      "business_stage": "二手房交易准备",
+      "scenario": "提交申请前查询所需材料",
+      "user_goal": "根据个人交易情形准确了解材料要求并减少电话咨询和补交",
+      "current_behavior": "在多个页面查找办事指南和材料清单，无法确认自身适用情形",
+      "pain_point": "材料要求分散且缺少面向具体情形的解释，用户难以判断适用材料",
+      "problem_type": "information_access",
+      "root_cause": "现有查询按业务事项静态展示，未将用户情形、业务规则与材料要求建立可交互关联",
+      "business_impact": "增加用户查询和咨询成本，并可能造成材料补交",
+      "frequency": "medium",
+      "impact_scope": "二手房交易申请人及咨询、受理人员",
+      "severity": "medium",
+      "evidence": [
+        {
+          "source_id": "SRC-001",
+          "source_type": "interview",
+          "source_title": "购房者访谈纪要",
+          "source_date": null,
+          "source_version": null,
+          "locator": "第3段",
+          "excerpt": "需要到多个页面查看材料要求……经常需要电话咨询窗口。",
+          "evidence_type": "direct",
+          "evidence_confidence": "high"
+        },
+        {
+          "source_id": "SRC-003",
+          "source_type": "system",
+          "source_title": "平台功能清单",
+          "source_date": null,
+          "source_version": null,
+          "locator": "查询服务模块",
+          "excerpt": "现有页面按业务事项展示，不支持基于用户情况的个性化问答。",
+          "evidence_type": "cross_validated",
+          "evidence_confidence": "high"
+        }
+      ],
+      "ai_assessment": {
+        "fit": "high",
+        "capabilities": [
+          "rag",
+          "llm_qa",
+          "workflow_assistance"
+        ],
+        "rationale": "任务涉及多文档知识检索、自然语言提问和情形引导，适合采用带引用的RAG问答；特殊情形仍需人工确认。",
+        "data_dependencies": [
+          "有效版本办事指南",
+          "材料清单",
+          "情形与材料规则映射",
+          "常见问题"
+        ],
+        "system_dependencies": [
+          "用户端查询入口",
+          "知识库更新机制",
+          "回答引用与反馈接口"
+        ],
+        "human_review_points": [
+          "政策与办事指南入库审核",
+          "产权或抵押特殊情形转人工",
+          "高风险回答抽检"
+        ],
+        "risks": [
+          "知识版本过期",
+          "遗漏例外条件",
+          "用户误将辅助回答视为最终审批结论"
+        ]
+      },
+      "product_proposal": {
+        "form": "自然语言办事助手",
+        "description": "通过多轮问题识别用户情形，检索有效办事材料并返回带来源引用的材料建议；涉及特殊产权或抵押情形时转人工确认。",
+        "alternative_non_ai": "建立条件筛选式材料向导，并统一办事指南和材料清单页面。"
+      },
+      "priority": "P1",
+      "confidence": "high",
+      "validation_status": "validated",
+      "open_questions": [
+        "情形与材料规则是否已有结构化数据",
+        "哪些情形必须直接转人工",
+        "办事指南的更新责任主体和频率"
+      ]
+    },
+    {
+      "requirement_id": "REQ-002",
+      "title": "特殊交易情形人工确认",
+      "user_role": "业务审批人员",
+      "business_stage": "二手房交易准备与受理",
+      "scenario": "申请人涉及产权、抵押等特殊情形",
+      "user_goal": "确保材料判断符合业务规则且责任可追溯",
+      "current_behavior": "由业务人员根据具体情况确认材料要求",
+      "pain_point": "高风险特殊情形无法仅依据静态页面或自动回答完成最终判断",
+      "problem_type": "risk_supervision",
+      "root_cause": "特殊情形规则复杂且错误成本高，需要专业人员结合具体材料判断",
+      "business_impact": "错误判断可能影响申请受理和后续交易流程",
+      "frequency": "low",
+      "impact_scope": "涉及产权、抵押等特殊情形的申请人与审批人员",
+      "severity": "high",
+      "evidence": [
+        {
+          "source_id": "SRC-004",
+          "source_type": "interview",
+          "source_title": "业务审批人员访谈",
+          "source_date": null,
+          "source_version": null,
+          "locator": "第5段",
+          "excerpt": "产权、抵押等特殊情形必须由工作人员确认，不能直接由系统自动判定。",
+          "evidence_type": "direct",
+          "evidence_confidence": "high"
+        }
+      ],
+      "ai_assessment": {
+        "fit": "not_recommended",
+        "capabilities": [
+          "workflow_assistance",
+          "rules_engine"
+        ],
+        "rationale": "AI可辅助识别特殊情形并整理材料，但不应直接给出最终业务结论。",
+        "data_dependencies": [
+          "特殊情形定义",
+          "转人工规则",
+          "材料状态"
+        ],
+        "system_dependencies": [
+          "人工工单或咨询入口",
+          "处理状态回传"
+        ],
+        "human_review_points": [
+          "所有特殊产权与抵押情形的最终判断"
+        ],
+        "risks": [
+          "自动判断越权",
+          "责任边界不清",
+          "材料信息不完整"
+        ]
+      },
+      "product_proposal": {
+        "form": "风险识别与人工转接",
+        "description": "系统识别可能的特殊情形并提示用户补充信息，将问题连同上下文转交业务人员，保留处理记录。",
+        "alternative_non_ai": "在办事页面明确特殊情形清单、咨询渠道和人工确认流程。"
+      },
+      "priority": "P1",
+      "confidence": "high",
+      "validation_status": "partially_validated",
+      "open_questions": [
+        "特殊情形清单是否完整",
+        "人工咨询服务时限",
+        "转人工记录的保存和权限要求"
+      ]
+    }
+  ],
+  "open_questions": [
+    "办事指南和材料清单是否存在统一有效版本",
+    "平台是否具备用户情形数据和知识库更新接口"
+  ],
+  "evidence_index": [
+    {
+      "source_id": "SRC-001",
+      "source_type": "interview",
+      "source_title": "购房者访谈纪要",
+      "source_date": null,
+      "source_version": null,
+      "locator": "第3段",
+      "excerpt": "需要到多个页面查看材料要求……经常需要电话咨询窗口。",
+      "evidence_type": "direct",
+      "evidence_confidence": "high"
+    },
+    {
+      "source_id": "SRC-002",
+      "source_type": "policy",
+      "source_title": "二手房交易办事指南",
+      "source_date": null,
+      "source_version": null,
+      "locator": "2.1 材料要求",
+      "excerpt": "申请材料根据交易主体、房屋状态及是否涉及抵押分为不同情形。",
+      "evidence_type": "direct",
+      "evidence_confidence": "medium"
+    },
+    {
+      "source_id": "SRC-003",
+      "source_type": "system",
+      "source_title": "平台功能清单",
+      "source_date": null,
+      "source_version": null,
+      "locator": "查询服务模块",
+      "excerpt": "不支持基于用户情况的个性化问答。",
+      "evidence_type": "direct",
+      "evidence_confidence": "high"
+    },
+    {
+      "source_id": "SRC-004",
+      "source_type": "interview",
+      "source_title": "业务审批人员访谈",
+      "source_date": null,
+      "source_version": null,
+      "locator": "第5段",
+      "excerpt": "特殊情形必须由工作人员确认。",
+      "evidence_type": "direct",
+      "evidence_confidence": "high"
+    }
+  ]
+}

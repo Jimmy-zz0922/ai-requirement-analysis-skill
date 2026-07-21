@@ -1,0 +1,49 @@
+{
+  "requirement_id": "REQ-001",
+  "title": "",
+  "user_role": "",
+  "business_stage": "",
+  "scenario": "",
+  "user_goal": "",
+  "current_behavior": "",
+  "pain_point": "",
+  "problem_type": "other",
+  "root_cause": "",
+  "business_impact": "",
+  "frequency": "unknown",
+  "impact_scope": "",
+  "severity": "medium",
+  "evidence": [
+    {
+      "source_id": "SRC-001",
+      "source_type": "interview",
+      "source_title": "",
+      "source_date": null,
+      "source_version": null,
+      "locator": "",
+      "excerpt": "",
+      "evidence_type": "direct",
+      "evidence_confidence": "medium"
+    }
+  ],
+  "ai_assessment": {
+    "fit": "medium",
+    "capabilities": [
+      "none"
+    ],
+    "rationale": "",
+    "data_dependencies": [],
+    "system_dependencies": [],
+    "human_review_points": [],
+    "risks": []
+  },
+  "product_proposal": {
+    "form": "",
+    "description": "",
+    "alternative_non_ai": ""
+  },
+  "priority": "P2",
+  "confidence": "medium",
+  "validation_status": "pending",
+  "open_questions": []
+}

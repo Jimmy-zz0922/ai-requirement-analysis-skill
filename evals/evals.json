@@ -1,0 +1,37 @@
+{
+  "skill_name": "ai-requirement-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "分析一份购房者访谈纪要，提取角色、场景、目标、痛点和待确认问题。不要直接给功能方案，所有结论附证据。",
+      "expected_output": "区分事实与分析；痛点包含原文证据、分类、影响和置信度；没有把用户口头方案直接当作需求。",
+      "files": [
+        "examples/real-estate-input.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "结合访谈、办事指南和系统功能清单，诊断为什么用户无法准确确认材料要求，并生成需求卡片。",
+      "expected_output": "形成表面痛点、平台问题、根因和业务影响链路；完成跨材料验证；输出符合Schema的需求卡片。",
+      "files": [
+        "examples/real-estate-input.md"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "评估自然语言办事助手是否适合使用大模型，并说明数据条件、风险、人工复核点和非AI替代方案。",
+      "expected_output": "不默认AI优先；建议RAG和引用溯源；对产权和抵押等高风险判断设置人工转接；给出条件筛选向导等非AI方案。",
+      "files": [
+        "examples/real-estate-input.md"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "把分析结果输出为可校验JSON，并确保每项需求都有source_id和原文定位。",
+      "expected_output": "JSON满足schemas/requirement-analysis.schema.json；字段完整、枚举正确、证据可追溯。",
+      "files": [
+        "examples/real-estate-input.md"
+      ]
+    }
+  ]
+}
