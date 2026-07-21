@@ -1,5 +1,7 @@
 # AI Requirement Analysis Skill
 
+[![Validate Skill](https://github.com/Jimmy-zz0922/ai-requirement-analysis-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/Jimmy-zz0922/ai-requirement-analysis-skill/actions/workflows/validate.yml)
+
 一个面向政务与企业数字化场景的 AI 辅助需求分析 Skill。它把访谈纪要、政策文件、业务流程、系统说明和数据接口材料，转换为可追溯的用户场景、平台问题、AI应用机会与标准需求卡片。
 
 ## 能解决什么问题
